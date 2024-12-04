@@ -1,137 +1,278 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
+/* Geral */
 body {
+    font-family: 'Montserrat', sans-serif;
     background-color: #14161E;
     color: #e0e0e0;
-    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-header nav {
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: transparent;
+    padding: 20px 40px;
 }
 
-nav .logo {
-    font-size: 24px;
-    color: white;
-}
-
-nav ul {
-    list-style-type: none;
+.menu {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
-nav ul li a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 16px;
+.auth-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 .auth-buttons .btn {
-    margin-left: 15px;
-    padding: 10px 20px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    color: #e0e0e0;
+    padding: 8px 20px;
     border-radius: 20px;
-    border: none;
     cursor: pointer;
 }
 
-.login {
-    background-color: transparent;
-    color: #e0e0e0;
+.auth-buttons .join {
+    background-color: #fff;
+    color: #14161E;
 }
 
-.join {
-    background-color: white;
-    color: black;
-}
-
+/* Hero Section */
 .hero {
-    text-align: center;
-    padding: 100px 20px;
-    background-image: url('hero-bg.png');
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
     font-size: 48px;
-    color: white;
+    margin: 20px 0;
+    color: #fff;
 }
 
 .hero p {
-    margin: 20px 0;
-    font-size: 18px;
-    color: #d3d3d3;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 30px;
 }
 
 .release-badge {
     background-color: #333;
     color: #fff;
     padding: 5px 10px;
+    border-radius: 5px;
     font-size: 12px;
-    border-radius: 10px;
 }
 
 .cta {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
-    margin-top: 50px;
 }
 
 .cta input {
-    padding: 20px;
-    border: 1px solid #444;
-    border-radius: 20px;
-    background-color: #1a1a1a;
-    color: white;
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    background: none;
+    color: #fff;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 200px;
 }
 
-footer {
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
+.cta .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-footer .logos img {
-    margin: 20px;
-    height: 40px;
-    opacity: 0.8;
+.cta .start-trial {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
 }
 
-/* Estilos para as elipses */
+.cta .subscribe {
+    background: none;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* Elipses */
 .background-elipses {
-    position: relative; /* Adiciona posição relativa ao contêiner */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    overflow: hidden; /* Evita que as elipses ultrapassem a tela */
+    overflow: hidden;
+    z-index: 1;
 }
 
-.ellipse_branca img {
+.ellipse {
     position: absolute;
-    top: -20px; /* Ajusta a posição vertical */
-    right: 0px; /* Ajusta a posição horizontal */
-    width: 700px;
+    border-radius: 50%;
     opacity: 0.3;
 }
 
-.ellipse_verde img {
-    position: absolute;
-    bottom: -200px; /* Ajusta a posição vertical */
-    left: -200px; /* Ajusta a posição horizontal */
+.ellipse-white {
+    background: #ffffff;
     width: 800px;
-    opacity: 0.4;
-    transform: rotate(45deg); /* Aplica uma rotação para o efeito de inclinação */
+    height: 800px;
+    top: -250px;
+    left: -300px;
+}
+
+.ellipse-green {
+    background: #00ff00;
+    width: 1200px;
+    height: 1200px;
+    bottom: -400px;
+    right: -500px;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+}
+
+footer .logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer .logos img {
+    width: 60px; /* Tamanho uniforme */
+    height: 60px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+footer .logos img:hover {
+    opacity: 1;
+}
+
+/* Responsividade */
+
+/* iPad Mini e iPhone SE (largura máxima de 768px) */
+@media (max-width: 768px) {
+    /* Remove menu */
+    .menu {
+        display: none;
+    }
+
+    .auth-buttons {
+        display: none;
+    }
+
+    .hero {
+        padding: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        max-width: 90%;
+    }
+
+    .cta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cta input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    footer .logos {
+        gap: 15px;
+    }
+
+    footer .logos img {
+        width: 50px; /* Reduz tamanho para dispositivos menores */
+        height: 50px;
+    }
+
+    .ellipse-white {
+        width: 600px;
+        height: 600px;
+        top: -200px;
+        left: -150px;
+    }
+
+    .ellipse-green {
+        width: 900px;
+        height: 900px;
+        bottom: -300px;
+        right: -300px;
+    }
+}
+
+/* iPhone SE (largura máxima de 375px) */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 24px; /* Menor título */
+    }
+
+    .hero p {
+        font-size: 12px;
+        max-width: 100%;
+    }
+
+    .cta {
+        gap: 8px; /* Menor espaçamento */
+        justify-content: center;
+    }
+
+    .cta .btn {
+        padding: 8px 16px;
+        font-size: 14px; /* Botões menores */
+    }
+
+    .cta input {
+        font-size: 12px;
+        padding: 8px 12px; /* Menor input */
+    }
+
+    footer .logos img {
+        width: 40px; /* Logos menores no iPhone SE */
+        height: 40px;
+    }
+
+    .ellipse-white {
+        width: 400px;
+        height: 400px;
+        top: -150px;
+        left: -100px;
+    }
+
+    .ellipse-green {
+        width: 600px;
+        height: 600px;
+        bottom: -200px;
+        right: -150px;
+    }
 }
